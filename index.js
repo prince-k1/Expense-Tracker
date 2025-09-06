@@ -1,8 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const signUpRouter = require('./routes/signupRoute');
 const sequelize = require('./utils/db-connection');
+
+
+const signUpRouter = require('./routes/signupRoute');
+const loginRouter = require('./routes/loginRoute');
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -12,6 +16,7 @@ app.use(express.static('public'));
 
 
 app.use('/signup', signUpRouter);
+app.use('/', loginRouter);
 
 sequelize.sync().then(() => {
     app.listen(3000, () => console.log('Server running on 3000'));

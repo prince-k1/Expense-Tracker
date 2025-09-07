@@ -18,7 +18,7 @@ route.post('/',  async (req, res) => {
                 res.send('Something went wrong');
             }
             if(result){
-                res.send('User Login successfully');
+                res.render('userFrontend');
             }else{
                 res.send('Password is incorrect');
             }

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Expense Tracker</title>
+    <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #eef2f3;
+        color: #333;
+        margin: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+
+    form {
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        max-width: 450px;
+        margin: 0 auto 30px auto;
+    }
+
+    input, select, button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+    }
+
+    input:focus, select:focus {
+        border-color: #28a745;
+        outline: none;
+    }
+
+    button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        transition: background-color 0.3s ease;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background-color: #218838;
+    }
+
+    /* Flex container for all cards */
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .card {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        width: 300px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .card h3 {
+        margin-top: 0;
+        font-size: 1.4rem;
+        color: #2c3e50;
+    }
+
+    .card p {
+        margin: 8px 0;
+        font-size: 1.1rem;
+    }
+
+    .card p strong {
+        color: #555;
+    }
+</style>
+
+
+</head>
+<body>
+
+    <h2>Expense Tracker</h2>
+
+    <form id="expense-form" action="/expense" method="post">
+        <input type="number" id="amount" placeholder="Expense Amount" required name="amount" />
+        <input type="text" id="description" placeholder="Description" required  name="desc"/>
+        <select id="category" required name="category">
+            <option value="">Select Category</option>
+            <option value="Food">Food</option>
+            <option value="Petrol">Petrol</option>
+            <option value="Drink">Drink</option>
+            <option value="Rent">Rent</option>
+            <option value="Other">Other</option>
+        </select>
+        <button type="submit">Add Expense</button>
+    </form>
+    <div class="card-container">
+    <% data.forEach(val => { %>
+        <div class="card">
+            <h3>Expense Details</h3>
+            <p><strong>Amount:</strong> ₹<%= val.amount %></p>
+            <p><strong>Category:</strong> <%= val.category %></p>
+            <p><strong>Description:</strong> <%= val.desc %></p>
+        </div>
+    <% }) %>
+    </div>
+
+    
+
+</body>
+</html>

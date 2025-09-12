@@ -131,10 +131,33 @@ tr:hover {
         width: 100%;
     }
 }
+/* Premium Button */
+.premium-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 1000;
+}
+
+.premium-btn:hover {
+    background-color: #e68900;
+    
+}
+
 
     </style>
   </head>
   <body>
+    <button class="premium-btn" onclick="window.location.href='/premium'">Buy Premium Membership</button>
+
     <div class="container">
       <header>Expense Tracker for <%= name %></header>
 
